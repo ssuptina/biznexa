@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="title description">
+  <title id="title">BizNexa business intelligence theoretical framework</title>
+  <desc id="description">A graphical overview showing the BI lifecycle from business data through validation, metric calculation, dashboard presentation, and human decisions; analytics categories; and cross-cutting governance principles.</desc>
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#292a27"/>
+      <stop offset="1" stop-color="#3b342f"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#b87355"/>
+    </marker>
+    <style>
+      text { font-family: Aptos, "Segoe UI", Arial, sans-serif; }
+      .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 2px; }
+      .title { font-size: 36px; font-weight: 700; }
+      .subtitle { font-size: 17px; }
+      .section { fill: #383832; font-size: 21px; font-weight: 700; }
+      .card-title { fill: #373630; font-size: 17px; font-weight: 700; }
+      .card-copy { fill: #6f6b62; font-size: 14px; }
+      .lens-title { fill: #373630; font-size: 17px; font-weight: 700; }
+      .lens-copy { fill: #6f6b62; font-size: 13px; }
+      .chip { fill: #5e594f; font-size: 13px; font-weight: 600; }
+      .small { fill: #858075; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="1000" fill="#f5f2ec"/>
+  <rect x="36" y="32" width="1368" height="150" rx="18" fill="url(#header)"/>
+  <text x="78" y="75" class="eyebrow" fill="#d2a287">BIZNEXA · THEORETICAL FOUNDATION</text>
+  <text x="78" y="122" class="title" fill="#fffaf4">From business records to better decisions</text>
+  <text x="78" y="153" class="subtitle" fill="#d9d3ca">A conceptual framework for trustworthy business intelligence and analytics</text>
+  <rect x="1151" y="62" width="205" height="34" rx="17" fill="#504238"/>
+  <text x="1253" y="84" text-anchor="middle" class="eyebrow" fill="#f0d7c6" font-size="12">CONCEPTUAL MODEL</text>
+
+  <text x="58" y="226" class="section">1. BI lifecycle</text>
+  <text x="58" y="250" class="small">Each stage depends on clear definitions and traceable evidence.</text>
+
+  <g>
+    <rect x="58" y="279" width="236" height="144" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <circle cx="87" cy="311" r="16" fill="#f2e7dc"/><text x="87" y="316" text-anchor="middle" fill="#9b6246" font-size="14" font-weight="700">1</text>
+    <text x="113" y="317" class="card-title">Business data</text>
+    <text x="79" y="354" class="card-copy">Orders · customers · products</text>
+    <text x="79" y="378" class="card-copy">Returns · inventory snapshots</text>
+    <text x="79" y="402" class="small">Source records and context</text>
+
+    <path d="M301 351h30" fill="none" stroke="#b87355" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="342" y="279" width="236" height="144" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <circle cx="371" cy="311" r="16" fill="#f2e7dc"/><text x="371" y="316" text-anchor="middle" fill="#9b6246" font-size="14" font-weight="700">2</text>
+    <text x="397" y="317" class="card-title">Validate</text>
+    <text x="363" y="354" class="card-copy">Connectivity and schema</text>
+    <text x="363" y="378" class="card-copy">Required fields and dates</text>
+    <text x="363" y="402" class="small">Check quality before analysis</text>
+
+    <path d="M585 351h30" fill="none" stroke="#b87355" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="626" y="279" width="236" height="144" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <circle cx="655" cy="311" r="16" fill="#f2e7dc"/><text x="655" y="316" text-anchor="middle" fill="#9b6246" font-size="14" font-weight="700">3</text>
+    <text x="681" y="317" class="card-title">Calculate metrics</text>
+    <text x="647" y="354" class="card-copy">Document grain and rules</text>
+    <text x="647" y="378" class="card-copy">Aggregate in PostgreSQL</text>
+    <text x="647" y="402" class="small">Apply period and exclusions</text>
+
+    <path d="M869 351h30" fill="none" stroke="#b87355" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="910" y="279" width="236" height="144" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <circle cx="939" cy="311" r="16" fill="#f2e7dc"/><text x="939" y="316" text-anchor="middle" fill="#9b6246" font-size="14" font-weight="700">4</text>
+    <text x="965" y="317" class="card-title">Present and explore</text>
+    <text x="931" y="354" class="card-copy">KPIs · charts · tables</text>
+    <text x="931" y="378" class="card-copy">Filters and drill-downs</text>
+    <text x="931" y="402" class="small">Show context and limitations</text>
+
+    <path d="M1153 351h30" fill="none" stroke="#b87355" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="1194" y="279" width="188" height="144" rx="12" fill="#f6eee7" stroke="#d7bca9" stroke-width="1.5"/>
+    <circle cx="1223" cy="311" r="16" fill="#e9d4c5"/><text x="1223" y="316" text-anchor="middle" fill="#89543a" font-size="14" font-weight="700">5</text>
+    <text x="1249" y="317" class="card-title">Human decision</text>
+    <text x="1215" y="354" class="card-copy">Review evidence</text>
+    <text x="1215" y="378" class="card-copy">Choose next step</text>
+    <text x="1215" y="402" class="small">No automatic action implied</text>
+  </g>
+
+  <text x="58" y="481" class="section">2. Analytics lenses</text>
+  <text x="58" y="505" class="small">Different questions require different evidence; a rule or observation is not automatically a prediction.</text>
+
+  <g>
+    <rect x="58" y="530" width="310" height="150" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <rect x="58" y="530" width="7" height="150" rx="3.5" fill="#b87355"/>
+    <text x="82" y="565" class="lens-title">Descriptive</text>
+    <text x="82" y="595" class="lens-copy">What happened or what is true now?</text>
+    <text x="82" y="623" class="lens-copy">Examples: sales totals, active customers,</text>
+    <text x="82" y="644" class="lens-copy">latest inventory snapshot.</text>
+
+    <rect x="389" y="530" width="310" height="150" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <rect x="389" y="530" width="7" height="150" rx="3.5" fill="#887a67"/>
+    <text x="413" y="565" class="lens-title">Diagnostic</text>
+    <text x="413" y="595" class="lens-copy">Where does a change or difference appear?</text>
+    <text x="413" y="623" class="lens-copy">Examples: period comparisons, customer</text>
+    <text x="413" y="644" class="lens-copy">segments, cohort retention.</text>
+
+    <rect x="720" y="530" width="310" height="150" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <rect x="720" y="530" width="7" height="150" rx="3.5" fill="#aa9b86"/>
+    <text x="744" y="565" class="lens-title">Decision support</text>
+    <text x="744" y="595" class="lens-copy">What evidence-based action merits review?</text>
+    <text x="744" y="623" class="lens-copy">Thresholds and suggested steps support</text>
+    <text x="744" y="644" class="lens-copy">a person; they do not execute actions.</text>
+
+    <rect x="1051" y="530" width="331" height="150" rx="12" fill="#fffdfa" stroke="#ded8ce" stroke-width="1.5"/>
+    <rect x="1051" y="530" width="7" height="150" rx="3.5" fill="#6d756d"/>
+    <text x="1075" y="565" class="lens-title">Predictive</text>
+    <text x="1075" y="595" class="lens-copy">What might happen, with measured uncertainty?</text>
+    <text x="1075" y="623" class="lens-copy">Requires an evaluated model, baseline,</text>
+    <text x="1075" y="644" class="lens-copy">monitoring, and approved use.</text>
+  </g>
+
+  <rect x="58" y="701" width="1324" height="62" rx="10" fill="#eee9e0"/>
+  <circle cx="87" cy="732" r="12" fill="#8b8b73"/>
+  <path d="M82 732l4 4 7-9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="110" y="727" fill="#4a4942" font-size="14" font-weight="700">BizNexa distinction</text>
+  <text x="110" y="748" fill="#6f6b62" font-size="13">Current RFM groups and inactivity thresholds are rule-based classifications—not machine-learning churn predictions.</text>
+
+  <text x="58" y="812" class="section">3. Trustworthy analytics foundation</text>
+  <text x="58" y="836" class="small">These controls apply across the lifecycle and keep results interpretable and reproducible.</text>
+
+  <g>
+    <rect x="58" y="861" width="230" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="173" y="894" text-anchor="middle" class="chip">Metric grain and denominator</text>
+    <rect x="304" y="861" width="212" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="410" y="894" text-anchor="middle" class="chip">Inclusive date boundaries</text>
+    <rect x="532" y="861" width="190" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="627" y="894" text-anchor="middle" class="chip">Returns and exclusions</text>
+    <rect x="738" y="861" width="166" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="821" y="894" text-anchor="middle" class="chip">Currency and units</text>
+    <rect x="920" y="861" width="202" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="1021" y="894" text-anchor="middle" class="chip">Privacy and access</text>
+    <rect x="1138" y="861" width="244" height="54" rx="27" fill="#fffdfa" stroke="#ded8ce"/>
+    <text x="1260" y="894" text-anchor="middle" class="chip">Ownership and governance</text>
+  </g>
+
+  <path d="M58 943h1324" stroke="#ddd7cd" stroke-width="1"/>
+  <text x="58" y="970" class="small">Conceptual overview · See the KPI dictionary and architecture guide for current implementation details and limitations.</text>
+  <text x="1382" y="970" text-anchor="end" class="small">Graphite &amp; Copper</text>
+</svg>
