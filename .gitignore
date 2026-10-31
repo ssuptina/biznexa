@@ -13,4 +13,5 @@ node_modules/
 .vite/
 server.lock.json
 .env.example
+tests/
 
