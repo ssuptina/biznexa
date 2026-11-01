@@ -24,6 +24,7 @@ py -3.11 -m venv .venv
 $env:PYTHONPATH = 'D:\Project\BizNexa\backend'
 .\.venv\Scripts\python.exe -m uvicorn biznexa.main:app --reload --host 127.0.0.1 --port 8000
 ```
+d:\Project\BizNexa\.venv\Scripts\activate.bat
 
 In another terminal, start the frontend:
 
@@ -45,6 +46,15 @@ npm --prefix frontend run build
 ```
 
 Analytics read the configured PostgreSQL schema. Startup does not import or reset data. The optional synthetic loader is development-only; never run it against production data.
+
+## Deploy frontend and backend separately to Vercel
+
+Create two Vercel projects from this repository:
+
+1. **Backend:** set Root Directory to the repository root (`.`). Vercel uses `api/index.py` as the FastAPI entrypoint and dependencies from the root `pyproject.toml`. Add `DATABASE_URL`, `APP_ENV=production`, `SYNTHETIC_LOAD_ENABLED=false`, `ANALYTICS_SCHEMA`, and `FRONTEND_ORIGIN` (the deployed frontend's exact origin, such as `https://biznexa.vercel.app`) to the backend project's environment variables.
+2. **Frontend:** set Root Directory to `frontend`. Add `VITE_API_BASE_URL` with the backend project's deployment URL, without a trailing slash.
+
+Keep `DATABASE_URL` only in the backend project; never expose it through a `VITE_*` variable. After changing environment variables, create a new deployment. Test the backend at `/health` and `/docs`; the API does not define a homepage at `/`.
 
 ## Documentation
 

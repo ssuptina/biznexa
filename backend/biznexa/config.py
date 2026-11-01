@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://biznexa:biznexa@localhost:5432/biznexa"
     synthetic_load_enabled: bool = False
     analytics_schema: str = "public"
+    frontend_origin: str = ""
 
     @property
     def sqlalchemy_database_url(self) -> str:

@@ -9,10 +9,12 @@ from decimal import Decimal
 from typing import Annotated, Literal, TypeVar
 
 from fastapi import FastAPI, HTTPException, Path, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 from sqlalchemy.exc import SQLAlchemyError
 
 from biznexa import analytics, customer_analytics, decision_intelligence, decision_tracker
+from biznexa.config import get_settings
 from biznexa.db import database_health
 
 logger = logging.getLogger(__name__)
@@ -22,6 +24,15 @@ app = FastAPI(
     summary="Business intelligence and decision analytics platform",
     version="0.2.0",
 )
+
+frontend_origin = get_settings().frontend_origin.strip()
+if frontend_origin:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[frontend_origin],
+        allow_methods=["GET", "POST"],
+        allow_headers=["Accept", "Content-Type"],
+    )
 
 T = TypeVar("T")
 
