@@ -51,10 +51,12 @@ Analytics read the configured PostgreSQL schema. Startup does not import or rese
 
 Create two Vercel projects from this repository:
 
-1. **Backend:** set Root Directory to the repository root (`.`). Vercel uses `api/index.py` as the FastAPI entrypoint and dependencies from the root `pyproject.toml`. Add `DATABASE_URL`, `APP_ENV=production`, `SYNTHETIC_LOAD_ENABLED=false`, `ANALYTICS_SCHEMA`, and `FRONTEND_ORIGIN` (the deployed frontend's exact origin, such as `https://biznexa.vercel.app`) to the backend project's environment variables.
+1. **Backend:** set Root Directory to the repository root (`.`). Vercel loads the FastAPI app exported by `api/index.py` (also declared in `[tool.vercel]` in the root `pyproject.toml`) and installs dependencies from that file. No `requirements.txt` or `vercel.json` is needed: Vercel's FastAPI integration routes requests to the app, whose endpoints are at `/health`, `/docs`, and `/api/...`. Add `DATABASE_URL`, `APP_ENV=production`, `SYNTHETIC_LOAD_ENABLED=false`, `ANALYTICS_SCHEMA`, and `FRONTEND_ORIGIN` (the frontend's exact deployed origin, such as `https://biznexa.vercel.app`) to the backend project's environment variables.
 2. **Frontend:** set Root Directory to `frontend`. Add `VITE_API_BASE_URL` with the backend project's deployment URL, without a trailing slash.
 
 Keep `DATABASE_URL` only in the backend project; never expose it through a `VITE_*` variable. After changing environment variables, create a new deployment. Test the backend at `/health` and `/docs`; the API does not define a homepage at `/`.
+
+The database engine is a process-global SQLAlchemy engine. Serverless instances do not share its connection pool, so aggregate connections can grow with the number of instances; use a database pooler and monitor connection limits before increasing traffic. CORS is enabled only when `FRONTEND_ORIGIN` is set, and that setting currently allows one exact origin.
 
 ## Documentation
 
