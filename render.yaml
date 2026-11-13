@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: biznexa-api
+    runtime: python
+    buildCommand: pip install .
+    startCommand: uvicorn biznexa.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: ANALYTICS_SCHEMA
+        value: public
+      - key: SYNTHETIC_LOAD_ENABLED
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false

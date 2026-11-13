@@ -23,9 +23,6 @@ dev = [
     "ruff>=0.7,<1",
 ]
 
-[tool.vercel]
-entrypoint = "api.index:app"
-
 [tool.setuptools.packages.find]
 where = ["backend"]
 
