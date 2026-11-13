@@ -91,6 +91,16 @@ def health() -> dict[str, object]:
     return {"status": "ok" if ready else "degraded", "database": db}
 
 
+@app.get("/", include_in_schema=False)
+def root() -> dict[str, str]:
+    """Provide a useful landing response for the API service root."""
+    return {
+        "name": "BizNexa API",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health/db", tags=["operations"])
 def database_health_endpoint() -> dict[str, object]:
     result = database_health()

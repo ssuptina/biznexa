@@ -18,6 +18,17 @@ def request(method, path):
     return asyncio.run(send())
 
 
+def test_root_returns_api_links():
+    response = request("GET", "/")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "name": "BizNexa API",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 def test_health_does_not_claim_database_connection_when_query_fails(monkeypatch):
     monkeypatch.setattr(
         "biznexa.main.database_health",

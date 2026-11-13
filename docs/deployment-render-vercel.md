@@ -18,20 +18,26 @@ The browser must never receive the database URL. `DATABASE_URL` belongs only in 
 - Keep your root `.env` local and untracked. Do not copy its database URL into Vercel or a `VITE_*` setting.
 - The old Vercel backend adapter is not used. Vercel will build only the `frontend/` directory.
 
-## 1. Deploy the API on Render
+## 1. Deploy the API on Render Free
 
-### Create the service
+You do not need a Blueprint. To avoid the Blueprint flow shown in Render, create a single web service manually and choose the **Free** compute plan. The Blueprint itself is not a paid compute service, but a Blueprint can create services whose selected plans cost money; this repository's `render.yaml` explicitly sets `plan: free` as an additional safeguard if you choose to use it.
 
-1. Push the current code to the Git branch you intend to deploy.
-2. Sign in to Render and choose **New** → **Blueprint**.
-3. Connect the GitHub repository and select the deployment branch.
-4. On the Blueprint setup screen, set **Blueprint Path** to `render.yaml` (repository-root path), or leave it blank to use Render's default root-level `render.yaml`. Do **not** enter `backend/`; that is a folder, not this Blueprint file. Confirm the service is named `biznexa-api` and uses:
-   - Root directory: repository root (do not set it to `frontend` or `backend`).
-   - Runtime: Python.
-   - Build command: `pip install .`
-   - Start command: `uvicorn biznexa.main:app --host 0.0.0.0 --port $PORT`
-   - Health check path: `/health`
-5. When prompted for values marked `sync: false`, enter them in Render. Do not commit real values into `render.yaml`.
+### Create a free web service (recommended)
+
+1. Push the app code to the GitHub branch you want to deploy.
+2. In Render, choose **New** → **Web Service** (not **Blueprint**).
+3. Connect the GitHub repository and select the branch.
+4. Configure the service:
+   - **Name:** `biznexa-api` (or any available name).
+   - **Language/Runtime:** Python 3.
+   - **Branch:** the branch containing your code.
+   - **Root Directory:** leave blank / repository root. Do not use `backend` or `frontend`.
+   - **Build Command:** `pip install .`
+   - **Start Command:** `uvicorn biznexa.main:app --host 0.0.0.0 --port $PORT`
+   - **Instance Type / Compute:** select **Free**. Check the selected plan and estimated cost before creating the service; do not select Starter or another paid plan.
+5. Create the Web Service. Once created, open its **Environment** page and add the variables in the next section.
+
+If Render asks for a payment method or the selected plan shows a charge, stop before confirming. Recheck that you chose a Web Service with the **Free** compute plan, not a paid plan or another resource.
 
 ### Set Render environment variables
 
@@ -47,7 +53,21 @@ Open the `biznexa-api` service and go to **Environment**. Set the following valu
 
 `DATABASE_URL` must only be set in Render. Never add it to Vercel, frontend `.env` files, source code, or a variable whose name starts with `VITE_`.
 
-Click **Save, rebuild, and deploy** (or the equivalent redeploy action). Wait for the deployment to finish, then copy the public service URL from Render, for example `https://biznexa-api.onrender.com`.
+Save the variables and deploy/redeploy. Wait for the deployment to finish, then copy the public service URL from Render, for example `https://biznexa-api.onrender.com`.
+
+### Free plan limitations and costs
+
+Render's Free web service has no compute fee, but it is intended for hobby/testing and has important limitations:
+
+- It spins down after 15 minutes without inbound traffic. The first request afterward can take about a minute while the service starts.
+- Free instance hours are limited to 750 hours per workspace per calendar month and shared across its Free services. If exhausted, Free services are suspended until the next month.
+- Its filesystem is ephemeral; do not store uploaded files or a local database there. BizNexa uses Supabase for PostgreSQL.
+- Bandwidth and build pipeline usage have included limits. Monitor these on Render's **Billing** page. According to Render's current [Free instance documentation](https://render.com/docs/free), exceeding limits can suspend services or builds if no payment method is attached; with a payment method, billable overages may be charged. Other paid resources in your workspace can also cost money.
+- Render may suspend a Free service that initiates unusually high outbound traffic. The API makes outbound database connections to Supabase, so keep usage moderate and monitor the service.
+- Free services are not recommended for production or sensitive business data.
+
+Do not create a Render Postgres database for this setup; the app is configured to connect to your existing Supabase PostgreSQL database.
+For official details, see Render's [Free instance documentation](https://render.com/docs/free) and [Blueprint plan field](https://render.com/docs/blueprint-spec#plan).
 
 ### Verify the API and database
 

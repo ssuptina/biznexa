@@ -32,7 +32,7 @@ API checks: `http://127.0.0.1:8000/health` and `http://127.0.0.1:8000/docs`.
 
 ## Deployment
 
-For step-by-step Render backend and Vercel frontend deployment instructions, environment variable setup, and troubleshooting, see the [Render + Vercel deployment guide](./docs/deployment-render-vercel.md). The root [render.yaml](./render.yaml) defines the Render API service.
+For step-by-step Render backend and Vercel frontend deployment instructions, including how to select Render's Free web-service plan without using a Blueprint, see the [Render + Vercel deployment guide](./docs/deployment-render-vercel.md). The optional root [render.yaml](./render.yaml) specifies the Render API service with `plan: free`.
 
 ## Tests and build
 
