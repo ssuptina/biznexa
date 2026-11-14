@@ -1,40 +1,41 @@
-# BizNexa
+﻿# BizNexa
 
-Retail and wholesale analytics app with a React/Vite frontend, FastAPI backend, and PostgreSQL database.
+BizNexa is a retail and wholesale analytics app. It combines a React + Vite frontend, a FastAPI backend, and PostgreSQL data access.
 
-> **Development status:** Authentication, tenant isolation, and production data governance are not implemented. Do not use with sensitive production data.
+> Demo only: auth, tenant isolation, and production governance are not implemented. Do not use with real production data.
 
 ## Run locally
 
-Requirements: Python 3.11+, Node.js 20.19+ (or 22.12+), npm, and PostgreSQL.
+Requirements: Python 3.11+, Node.js 20.19+ or 22.12+, npm, and PostgreSQL.
 
-1. If you do not already have a root `.env`, copy `.env.example` to `.env`.
-2. Set `DATABASE_URL` in `.env`. For Supabase, open the project dashboard, select **Connect**, choose **Transaction pooler**, and copy its connection URL. Keep it out of frontend variables.
-3. Install and start the backend:
+1. Copy `.env.example` to `.env` and set `DATABASE_URL`.
+2. Start the backend:
 
-   ```powershell
-   py -3.11 -m venv .venv
-   .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
-   $env:PYTHONPATH = "$PWD\backend"
-   .\.venv\Scripts\python.exe -m uvicorn biznexa.main:app --reload --host 127.0.0.1 --port 8000
-   ```
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+$env:PYTHONPATH = "$PWD\backend"
+.\.venv\Scripts\python.exe -m uvicorn biznexa.main:app --reload --host 127.0.0.1 --port 8000
+```
 
-4. In a second terminal, install and start the frontend:
+3. In a second terminal, start the frontend:
 
-   ```powershell
-   npm --prefix frontend install
-   npm --prefix frontend run dev
-   ```
+```powershell
+npm --prefix frontend install
+npm --prefix frontend run dev
+```
 
-5. Open the Vite URL shown in the terminal. The local frontend proxies API requests to the backend.
+4. Open the local Vite URL shown in the terminal.
 
-API checks: `http://127.0.0.1:8000/health` and `http://127.0.0.1:8000/docs`.
+Checks:
+- `http://127.0.0.1:8000/health`
+- `http://127.0.0.1:8000/docs`
 
-## Deployment
+## Deploy
 
-For step-by-step Render backend and Vercel frontend deployment instructions, including how to select Render's Free web-service plan without using a Blueprint, see the [Render + Vercel deployment guide](./docs/deployment-render-vercel.md). The optional root [render.yaml](./render.yaml) specifies the Render API service with `plan: free`.
+See the [Render + Vercel deployment guide](./docs/deployment-render-vercel.md) for setup steps. The optional [render.yaml](./render.yaml) configures the Render API service.
 
-## Tests and build
+## Validate
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
@@ -42,9 +43,9 @@ For step-by-step Render backend and Vercel frontend deployment instructions, inc
 npm --prefix frontend run build
 ```
 
-## Project documentation
+## Docs
 
 - [Architecture](./docs/architecture.md)
-- [Render + Vercel deployment guide](./docs/deployment-render-vercel.md)
-- [KPI definitions](./docs/kpi-dictionary.md)
-- [Database schema and data](./docs/synthetic-dataset.md)
+- [KPI dictionary](./docs/kpi-dictionary.md)
+- [Synthetic dataset](./docs/synthetic-dataset.md)
+- [Deployment guide](./docs/deployment-render-vercel.md)
