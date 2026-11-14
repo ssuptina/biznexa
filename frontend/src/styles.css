@@ -249,20 +249,20 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .pulse-period-context { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 14px; padding: 10px 0 12px; color: #77736a; font-size: 8px; }
 .pulse-period-context b { margin-right: 4px; color: #514e47; font-weight: 600; }
 .pulse-source,.pulse-insight-count { padding: 4px 7px; border: 1px solid #e6d6c9; border-radius: 999px; color: #805139; background: #f6eee7; font-size: 7px; font-weight: 700; }
-.pulse-evidence-grid { display: grid; grid-template-columns: minmax(0,.82fr) minmax(0,1.35fr); gap: 11px; align-items: start; }
-.pulse-chart-panel,.pulse-insight-panel { min-width: 0; padding: 13px; border: 1px solid #e5dfd6; border-radius: 5px; background: #fffdfa; }
+.pulse-evidence-grid { display: grid; grid-template-columns: minmax(0,.82fr) minmax(0,1.35fr); gap: 11px; align-items: stretch; }
+.pulse-chart-panel,.pulse-insight-panel { display: flex; flex-direction: column; min-width: 0; min-height: 260px; padding: 13px; border: 1px solid #e5dfd6; border-radius: 5px; background: #fffdfa; }
 .pulse-panel-heading { align-items: center; }
 .pulse-panel-heading h3 { margin: 3px 0 0; color: #393832; font: 600 12px "Aptos Display",sans-serif; }
 .pulse-period-note { color: #8b857a; font-size: 8px; }
-.pulse-chart { width: 100%; height: 190px; margin-top: 8px; }
+.pulse-chart { width: 100%; height: 170px; margin-top: 8px; }
 .pulse-chart-legend { display: flex; gap: 13px; color: #77736a; font-size: 8px; }
 .pulse-chart-legend span { display: inline-flex; align-items: center; gap: 5px; }
 .pulse-swatch { width: 8px; height: 8px; border-radius: 2px; background: #b87355; }.pulse-swatch.profit { background: #5a5b54; }
 .pulse-chart-footer { display: flex; flex-wrap: wrap; gap: 7px 14px; padding-top: 9px; margin-top: 8px; border-top: 1px solid #eee9e2; color: #817b70; font-size: 8px; }
 .pulse-chart-footer b { margin-left: 3px; color: #4a4841; font-weight: 600; }
 .pulse-insight-count { min-width: 23px; text-align: center; }
-.pulse-insight-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,290px),1fr)); gap: 8px; margin-top: 11px; }
-.pulse-insight-card { min-width: 0; padding: 11px; border: 1px solid #ebe5dc; border-radius: 5px; background: #fff; }
+.pulse-insight-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); gap: 8px; margin-top: 11px; flex: 1; align-content: start; }
+.pulse-insight-card { min-width: 0; padding: 10px 10px 9px; border: 1px solid #ebe5dc; border-radius: 5px; background: #fff; }
 .pulse-insight-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #9b765e; font-size: 7px; font-weight: 700; letter-spacing: .3px; }
 .pulse-level { padding: 3px 6px; border: 1px solid #e6ddd0; border-radius: 999px; color: #805139; background: #f7f2eb; font-size: 7px; letter-spacing: 0; }
 .pulse-level-opportunity { color: #596a4c; background: #f0f3eb; border-color: #dce5d2; }

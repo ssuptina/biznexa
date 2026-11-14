@@ -96,6 +96,7 @@ export function BusinessPulse({
     })
     return rows
   }, [data])
+  const visibleInsights = data ? data.insights.slice(0, 3) : []
 
   return <section className="business-pulse" aria-labelledby="business-pulse-title">
     <header className="pulse-header">
@@ -153,8 +154,8 @@ export function BusinessPulse({
             <div><span className="panel-kicker">EVIDENCE REVIEW</span><h3 id="pulse-insights-title">Signals to review</h3></div>
             <span className="pulse-insight-count">{data.insights.length}</span>
           </div>
-          {data.insights.length ? <div className="pulse-insight-list">
-            {data.insights.map((insight) => <article className="pulse-insight-card" key={insight.id}>
+          {visibleInsights.length ? <div className="pulse-insight-list">
+            {visibleInsights.map((insight) => <article className="pulse-insight-card" key={insight.id}>
               <div className="pulse-insight-meta"><span>{insight.category}</span><span className={`pulse-level pulse-level-${insight.level.toLowerCase()}`}>{insight.level}</span></div>
               <h4>{insight.title}</h4>
               <p>{insight.explanation}</p>
