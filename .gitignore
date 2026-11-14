@@ -32,3 +32,5 @@ node_modules/
 server.lock.json
 tests/
 .opencode
+.reverse-engineering-overview.md
+.master-reverse-engineering-overview.md
